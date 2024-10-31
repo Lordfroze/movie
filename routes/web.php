@@ -55,5 +55,8 @@ Route::get('/login', function () {
 
 // Route request untuk melihat semua isi request
 Route::get('/request', function(Request $request){
-    dd($request);
+    // dd($request);    menampilkan isi seluruh parameter request
+    // return $request->host(); menampilkan host
+    return $request->nama;
+
 });
