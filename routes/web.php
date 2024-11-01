@@ -57,6 +57,15 @@ Route::get('/login', function () {
 Route::get('/request', function(Request $request){
     // dd($request);    menampilkan isi seluruh parameter request
     // return $request->host(); menampilkan host
-    return $request->nama;
+    //return $request->nama; memanmpilkan request yang berisi parameter nama
 
+    // Contoh mengolah data mengubah ke kapital
+    // $filtered = $request->collect()->map(function ($value){
+    //     return strtoupper($value);
+    // });
+    // return $filtered;
+
+    // Contoh hanya mengambil data name dan age
+    $filtered = $request->collect()->only(['name', 'age']);
+    return $filtered;
 });
