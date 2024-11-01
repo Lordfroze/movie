@@ -69,3 +69,15 @@ Route::get('/request', function(Request $request){
     $filtered = $request->collect()->only(['name', 'age']);
     return $filtered;
 });
+
+// Route request untuk data input dan query params
+Route::post('/request', function (Request $request){
+    
+    // method input untuk menangani form
+    // $input = $request->input('colors.*'); 
+    // return $input;
+
+    // method input untuk menangani query
+    $query = $request->query(); 
+    return $query;
+});
