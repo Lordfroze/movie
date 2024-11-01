@@ -78,6 +78,12 @@ Route::post('/request', function (Request $request){
     // return $input;
 
     // method input untuk menangani query
-    $query = $request->query(); 
-    return $query;
+    // $query = $request->query(); 
+    // return $query;
+
+    // Method Khusus Untuk Data Tanggal
+    $date = $request->date('schedule', 'd-m-Y', 'Asia/Jakarta')
+    //menambah 3 hari
+    ->addDays(3);
+    return $date->diffForHumans();
 });
