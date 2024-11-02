@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckMembership;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 //array movies untuk keperluan dev 
 $movies = [];
@@ -111,4 +112,27 @@ Route::post('/request', function (Request $request){
 
     //Mengenal Response Dan Response Pada Header
     return response('OK', 201)->header('Content-Type', 'text/plain');
+});
+
+// Menambahkan Data Headers Untuk Cache
+Route::get('/cache-control', function(){
+    return Response::make('page allow to cache', 200)
+    ->header('Cache-Control', 'public, max-age=86400');
+});
+
+// Menambahkan cache pada middleware
+Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
+    // Menambahkan cookie
+    Route::get('/dashboard',function(){
+        $user = 'admin';
+        return response('login successfully', 200)->cookie('user', $user);
+    });
+
+    Route::get('/privacy', function () {
+        return 'Privacy Page';
+    });
+ 
+    Route::get('/terms', function () {
+        return 'Terms Page';
+    });
 });
