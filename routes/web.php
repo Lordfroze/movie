@@ -82,8 +82,33 @@ Route::post('/request', function (Request $request){
     // return $query;
 
     // Method Khusus Untuk Data Tanggal
-    $date = $request->date('schedule', 'd-m-Y', 'Asia/Jakarta')
-    //menambah 3 hari
-    ->addDays(3);
-    return $date->diffForHumans();
+    // $date = $request->date('schedule', 'd-m-Y', 'Asia/Jakarta')
+    // //menambah 3 hari
+    // ->addDays(3);
+    // return $date->diffForHumans();
+
+    // Cek Data Dari Request kedua syarat harus terpenuhi seperti AND menggunakan (has)
+    // if ($request->has(['email','password',])){
+    //     return 'Login berhasil';
+    // }
+
+    // Cek Data Dari Request salah satu syarat harus terpenuhi seperti OR menggunakan (hasAny)
+    // if ($request->hasAny(['email','password',])){
+    //     return 'Login berhasil';
+    // }
+
+    // return 'Gagal';
+
+    // Mencari Request Yg Hilang Dan Menambahkannya
+    // $request->merge(['email' => 'email@mail.com']);
+
+    // if($request->missing('email')){
+    //     return 'Email tidak ada';
+    // } else {
+    //     return 'Datanya ada';
+    // }
+    // return 'Gagal';
+
+    //Mengenal Response Dan Response Pada Header
+    return response('OK', 201)->header('Content-Type', 'text/plain');
 });
