@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckMembership;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
@@ -123,10 +124,8 @@ Route::get('/cache-control', function(){
 // Menambahkan cache pada middleware
 Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function () {
 
-    // Halaman home
-    Route::get('/home', function(){
-        return 'Selamat datang di halaman HOME';
-    })->name('home');
+    // Halaman home yang diarahkan ke HomeContoller
+    Route::get('/home',[HomeController::class, 'index'])->name('home');
 
     // Menambahkan cookie
     Route::get('/dashboard',function(){
@@ -142,10 +141,11 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
         return 'Terms Page';
     });
 
-    // Menghapus cookie dan redirect ke halama home
+    // Menghapus cookie dan redirect ke halaman home
     Route::get('/logout', function(){
         //return response('logout successfully', 200)->withoutCookie('user');
-        return redirect()->route('home')->withoutCookie('user');    
+        // return redirect()->route('home')->withoutCookie('user');    
+        return redirect()->action([HomeController::class, 'index'], ['authenticated' => false]);
     });
 
 
