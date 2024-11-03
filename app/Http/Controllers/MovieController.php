@@ -36,7 +36,11 @@ class MovieController extends Controller implements HasMiddleware // Implementas
     // method bernama index untuk menampilkan data
     public function index()
     {
-        return $this->movies;
+        return response()->json(
+            [
+                'movies' => $this->movies,
+                'message' => 'List of movies',
+            ],200);
     }
 
     // method bernama show untuk menampilkan data berdasar id

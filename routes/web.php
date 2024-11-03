@@ -145,9 +145,13 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
     Route::get('/logout', function(){
         //return response('logout successfully', 200)->withoutCookie('user');
         // return redirect()->route('home')->withoutCookie('user');    
-        return redirect()->action([HomeController::class, 'index'], ['authenticated' => false]);
+        return redirect()->action([HomeController::class, 'index'], ['authenticated' => false])->withoutCookie('user');
     });
 
 
 });
 
+// Redirect ke external
+Route::get('/external', function (){
+    return redirect('https://www.google.com');
+});
