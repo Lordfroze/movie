@@ -42,7 +42,7 @@ Route::get('/laravel', function () {
 });
 
 Route::get('/test', function () {
-    echo "HALO INI ADALAH TEST DARI VM UBUNTU";
+    echo "HALO INI ADALAH TEST DARI SERVER";
 });
 
 // Route pricing
@@ -154,4 +154,9 @@ Route::middleware('cache.headers:public;max_age=2628000;etag')->group(function (
 // Redirect ke external
 Route::get('/external', function (){
     return redirect('https://www.google.com');
+});
+
+// Membuka halaman home dari views
+Route::get('/home', function(){
+    return view('home');
 });
