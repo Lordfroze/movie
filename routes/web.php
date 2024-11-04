@@ -7,6 +7,14 @@ use App\Http\Controllers\MovieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/test', function () {
+    echo "HALO INI ADALAH TEST DARI SERVER";
+});
+
 //array movies untuk keperluan dev 
 $movies = [];
 
@@ -36,14 +44,6 @@ Route::group(
         Route::delete('/{id}',[MovieController::class, 'destroy']);
     }
 );
-
-Route::get('/laravel', function () {
-    return view('welcome');
-});
-
-Route::get('/test', function () {
-    echo "HALO INI ADALAH TEST DARI SERVER";
-});
 
 // Route pricing
 Route::get('/pricing', function () {

@@ -25,28 +25,25 @@ class MovieController extends Controller implements HasMiddleware // Implementas
 
     // method middleware semua fungsi harus melewati middleware ini
     public static function middleware()
-    {
-        return [
-            'isAuth',
-            new Middleware('isMember', only: ['show']),   // menerapkan hanya pada method show
-            // new Middleware('isMember', except: ['show']), // menerapkan semua method kecuali show
-        ];
+    {   
+        //disable sementara middleware untuk proses dev
+        // return [
+        //     'isAuth',
+        //     new Middleware('isMember', only: ['show']),   // menerapkan hanya pada method show
+        //     // new Middleware('isMember', except: ['show']), // menerapkan semua method kecuali show
+        // ];
     }
 
     // method bernama index untuk menampilkan data
     public function index()
     {
-        return response()->json(
-            [
-                'movies' => $this->movies,
-                'message' => 'List of movies',
-            ],200);
+        return view('movies.index'); // menampilan halaman index didalam folder movies
     }
 
     // method bernama show untuk menampilkan data berdasar id
     public function show($id)
     {
-        return $this->movies[$id];
+        return view('movies.show'); // menampilkan halaman show didalam folder movies
     }
 
     // method bernama store untuk menambah data
