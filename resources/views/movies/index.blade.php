@@ -12,7 +12,9 @@
             <li><a href="<?= $value ?>"><?= $key ?></a></li>
         <?php endforeach; ?>
     </ul>
-    
+    <!-- Memanggil $config dari app/Providers/ConfigServiceProvider.php -->
+    {{dd($config)}}
+
     <h1>{{$titlePage}}</h1> <!-- menampilkan titlepage yang dikirim dari method index MovieController -->
     {{dd($movies)}} // menampilkan data $movies yang dikirim dari method index MovieController
 </body>
