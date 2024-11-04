@@ -36,14 +36,22 @@ class MovieController extends Controller implements HasMiddleware // Implementas
 
     // method bernama index untuk menampilkan data
     public function index()
-    {
-        return view('movies.index'); // menampilan halaman index didalam folder movies
+    {   
+        $movies = $this->movies;
+        // cara 1 untuk menampilkan halaman
+        // return view('movies.index', ['movies' => $movies]); // menampilan halaman index didalam folder movies dan mengirim data $movies
+        
+        // cara 2 untuk menampilkan halaman dengan compat dan with
+        return view('movies.index', compact('movies'))->with([
+            'titlePage' => 'Movie List'
+        ]);
     }
 
     // method bernama show untuk menampilkan data berdasar id
     public function show($id)
-    {
-        return view('movies.show'); // menampilkan halaman show didalam folder movies
+    {   
+        $movies = $this->movies[$id]; //menapilkan movies berdasarkan id
+        return view('movies.show', ['movies' => $movies]); // menampilkan halaman show didalam folder movies dan mengirim data $movies berdasarkan id
     }
 
     // method bernama store untuk menambah data
