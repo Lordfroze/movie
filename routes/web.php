@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
     return view('welcome');
@@ -158,5 +159,14 @@ Route::get('/external', function (){
 
 // Membuka halaman home dari views
 Route::get('/home', function(){
-    return view('home');
+    // $name = '<h1>Laravel</h1>';
+    // return view('home', compact('name')); // mengirim view dengan variabel name yang bisa diakses dimanapun
+
+    // mengirim view dengan variabel $user
+    $user = [
+        'name'  => 'Jhon doe',
+        'email' => 'jdoe@mail.com',
+        'role'  => 'user'
+    ];
+    return view('home', compact('user')); 
 });

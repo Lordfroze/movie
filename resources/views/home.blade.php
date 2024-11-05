@@ -13,5 +13,22 @@
         <?php endforeach; ?>
     </ul>
     <h1>Selamat Datang di Home dari views</h1>
+    
+    
+    <p>Menampilkan variabel name dari routes/web.php </p>
+
+    <!-- Menampilkan data $user dari routes/web.php dan menambah kondisi if else-->
+    Profile:
+    <ul>
+        <li>Name: {{$user['name']}}</li>
+        <li>Email: {{$user['email']}}</li>
+        @if ($user['role']== 'admin')
+        <li>Role: Administrator</li>
+        @elseif ($user['role']== 'user')
+        <li>Role: User</li>
+        @else
+        <li>Role: Unknown</li>
+        @endif
+        </ul>
 </body>
 </html>
