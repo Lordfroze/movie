@@ -39,30 +39,30 @@ class AppServiceProvider extends ServiceProvider
         // });
 
         // Menu website dengan method composer dapat diakses semua halaman
-        View::composer('*', function ($view){
-            $menu = [
-                'Home' => '/',
-                'About' => '/about',
-                'Contact' => '/contact',
-            ];
+        // View::composer('*', function ($view){
+        //     $menu = [
+        //         'Home' => '/',
+        //         'About' => '/about',
+        //         'Contact' => '/contact',
+        //     ];
 
-            $authenticated = true; // untuk development
+        //     $authenticated = true; // untuk development
 
-            // Logic untuk menambah menu jika user $authenticated bernilai true
-            if ($authenticated){
-                $menu = array_merge($menu, [
-                    'Logout' => '/logout',
-                    'Profile' => '/profile',
-                    'Dashboard' => '/dashboard',
-                ]);
-            }
+        //     // Logic untuk menambah menu jika user $authenticated bernilai true
+        //     if ($authenticated){
+        //         $menu = array_merge($menu, [
+        //             'Logout' => '/logout',
+        //             'Profile' => '/profile',
+        //             'Dashboard' => '/dashboard',
+        //         ]);
+        //     }
 
-            $view->with('menu',$menu);
-        });
+        //     $view->with('menu',$menu);
+        // });
 
 
-       // lanjut besok 
-        // View::composer('*', MenuComposer::class);
+       // Memisah Logic data view composer,diambil dari view dari app/Views/Composers/MenuComposer.php
+        View::composer('*', MenuComposer::class);
     }
 
     /**
