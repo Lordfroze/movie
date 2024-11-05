@@ -163,10 +163,14 @@ Route::get('/home', function(){
     // return view('home', compact('name')); // mengirim view dengan variabel name yang bisa diakses dimanapun
 
     // mengirim view dengan variabel $user
-    $user = [
-        'name'  => 'Jhon doe',
-        'email' => 'jdoe@mail.com',
-        'role'  => 'user'
-    ];
-    return view('home', compact('user')); 
+    // $user = [
+    //     'name'  => 'Jhon doe',
+    //     'email' => 'jdoe@mail.com',
+    //     'role'  => 'admin'
+    // ];
+    // return view('home', compact('user')); 
+
+    // Mengirim movie category untuk teknik switch
+    $movieCategory = 'drama';
+    return view('home',compact('movieCategory'));
 });

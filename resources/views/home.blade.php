@@ -17,18 +17,27 @@
     
     <p>Menampilkan variabel name dari routes/web.php </p>
 
-    <!-- Menampilkan data $user dari routes/web.php dan menambah kondisi if else-->
-    Profile:
-    <ul>
-        <li>Name: {{$user['name']}}</li>
-        <li>Email: {{$user['email']}}</li>
-        @if ($user['role']== 'admin')
-        <li>Role: Administrator</li>
-        @elseif ($user['role']== 'user')
-        <li>Role: User</li>
-        @else
-        <li>Role: Unknown</li>
-        @endif
-        </ul>
+     Profile:
+     <!-- Menampilkan data $user dari routes/web.php dan menambah kondisi if else-->
+    
+    <!-- Menggunakan Switch -->
+     <h2>Movie Category</h2>
+    @switch($movieCategory)
+        @case('action')
+            <h4>Action Movies</h4>
+            @break
+        
+            @case('comedy')
+            <h4>Comedy Movies</h4>
+            @break
+        
+        @case('drama')
+            <h4>Drama Movies</h4>
+            @break
+            
+        @default
+        <h4>Other Movies</h4>
+    @endswitch        
+
 </body>
 </html>
