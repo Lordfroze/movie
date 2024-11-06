@@ -171,6 +171,18 @@ Route::get('/home', function(){
     // return view('home', compact('user')); 
 
     // Mengirim movie category untuk teknik switch
-    $movieCategory = 'drama';
-    return view('home',compact('movieCategory'));
+    // $movieCategory = 'drama';
+    // return view('home',compact('movieCategory'));
+
+    // Mengirim $movies berisikan array movies
+    $movies = [ 
+        ['title' => 'The Matrix', 'year' =>  1999],
+        ['title' => 'Inception', 'year' =>  2010],
+        ['title' => 'The Matrix', 'year' =>  2014],
+        ['title' => 'Interstellar', 'year' =>  2008],
+        ['title' => 'The Dark Knight', 'year' =>  2018],
+
+    ];
+
+    return view('home', compact('movies'));
 });

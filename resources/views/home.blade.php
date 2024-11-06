@@ -12,32 +12,49 @@
             <li><a href="<?= $value ?>"><?= $key ?></a></li>
         <?php endforeach; ?>
     </ul>
-    <h1>Selamat Datang di Home dari views</h1>
-    
-    
-    <p>Menampilkan variabel name dari routes/web.php </p>
+        
+    <h2> Movie List</h2>
+    <!-- Perulangan for -->
+     <!-- <ul>
+     @for($index = 0; $index < count($movies); $index++)
+     <li>{{$movies[$index]['title']}} - {{$movies[$index]['year']}}</li>
+     @endfor
+     </ul> -->
 
-     Profile:
-     <!-- Menampilkan data $user dari routes/web.php dan menambah kondisi if else-->
+     <!-- Perulangan for each + else -->
+      <!-- <ul>
+      @forelse ($movies as $movie)
+      <li>{{$movie['title']}} - {{$movie['year']}} </li>
+      @empty
+      <li>No movies found.</li>
+      @endforelse
+      </ul> -->
+
+      <!-- Perulangan while -->
+       <!-- <ul>
+      @php
+            $index = 0;
+      @endphp
+
+      @while ($index < count($movies))
+     <li>{{$movies[$index]['title']}} - {{$movies[$index]['year']}}</li>
+    @php
+            $index++;
+    @endphp
+    @endwhile
+    </ul> -->
     
-    <!-- Menggunakan Switch -->
-     <h2>Movie Category</h2>
-    @switch($movieCategory)
-        @case('action')
-            <h4>Action Movies</h4>
-            @break
-        
-            @case('comedy')
-            <h4>Comedy Movies</h4>
-            @break
-        
-        @case('drama')
-            <h4>Drama Movies</h4>
-            @break
-            
-        @default
-        <h4>Other Movies</h4>
-    @endswitch        
+    <!-- Penerapan Continue Dan Break Di Perulangan Blade -->
+     @foreach($movies as $movie)
+            @if($movie['year'] < 2000)
+                @continue
+            @endif
+
+            @if($movie['year'] > 2015)
+                @break
+            @endif                
+            <li>{{$movie['title']}} - {{$movie['year']}}</li>
+    @endforeach
 
 </body>
 </html>
