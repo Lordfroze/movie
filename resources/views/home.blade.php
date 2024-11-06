@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title> 
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 <body>
     <!-- //menu website -->
@@ -75,9 +76,20 @@
      -->
 
     <!-- Menampilkan index sekarang dari seluruh movie -->
-    @foreach($movies as $movie)
+    <!-- @foreach($movies as $movie)
     <p>Movie {{$loop->remaining + 1}} of {{$loop->count}}: {{$movie['title']}} - {{$movie['year']}}</p>
-    @endforeach      
+    @endforeach       -->
 
+    <!-- Menggunakan kondisi didalam atribute class -->
+    <!-- @foreach($movies as $movie)
+    <p class="{{$movie['year'] < 2000 ? 'text-red-500' : 'text-green-500'}}">
+        {{$movie['title']}} - {{$movie['year']}}</p>
+    @endforeach    -->
+
+    <!-- Memecah Tampilan Blade Dengan Fungsi Include -->
+    @foreach($movies as $movie)
+            @include('partials._movie', ['movie' => $movie])  <!-- Menyertakan file partial partials._movie dan mengirimkan data $movie -->
+    @endforeach
+     
 </body>
 </html>
