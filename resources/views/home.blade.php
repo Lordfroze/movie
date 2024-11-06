@@ -45,7 +45,7 @@
     </ul> -->
     
     <!-- Penerapan Continue Dan Break Di Perulangan Blade -->
-     @foreach($movies as $movie)
+     <!-- @foreach($movies as $movie)
             @if($movie['year'] < 2000)
                 @continue
             @endif
@@ -54,7 +54,30 @@
                 @break
             @endif                
             <li>{{$movie['title']}} - {{$movie['year']}}</li>
-    @endforeach
+    @endforeach -->
+
+<!-- Variabel tersembunyi dari perulangan -->
+    <!-- menambahkan angka -->
+    <!-- @foreach($movies as $movie)
+    <p>{{$loop->iteration}} . {{$movie['title']}} - {{$movie['year']}}</p>
+    @endforeach -->
+
+    <!-- Menampilkan movie pertama terakhir -->
+    <!-- @foreach($movies as $movie)
+            @if($loop->first)
+                <p>First Movie: {{$movie['title']}} - {{$movie['year']}}</p>
+            @elseif($loop->last)
+                <p>Last Movie: {{$movie['title']}} - {{$movie['year']}}</p>
+            @else
+                <p>Last Movie: {{$movie['title']}} - {{$movie['year']}}</p>
+            @endif
+    @endforeach      
+     -->
+
+    <!-- Menampilkan index sekarang dari seluruh movie -->
+    @foreach($movies as $movie)
+    <p>Movie {{$loop->remaining + 1}} of {{$loop->count}}: {{$movie['title']}} - {{$movie['year']}}</p>
+    @endforeach      
 
 </body>
 </html>
