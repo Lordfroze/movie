@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 Route::get('/test', function () {
